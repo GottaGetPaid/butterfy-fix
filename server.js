@@ -1,20 +1,23 @@
-const passport = require('passport');
-const express = require('express');
+import express from 'express';
+import passport from 'passport';
+import { Strategy as SpotifyStrategy } from 'passport-spotify';  
+import bcrypt from 'bcrypt';
+import mongoose from 'mongoose';
+
 const app = express();
-const SpotifyStrategy = require('passport-spotify').Strategy;
-const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
+
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/butterfy');
 
 const UserSchema = new mongoose.Schema({
-    email: String,
-    username: String,
-    password: String,
-    spotifyId: String,
-    spotifyToken: String,
+  email: String,
+  username: String,
+  password: String,
+  spotifyToken: String, 
+  spotifyLinked: { type: Boolean, default: false }, // flag to track if Spotify is linked
 });
+
 const User = mongoose.model('User', UserSchema)
 
 passport.use(
@@ -26,6 +29,7 @@ passport.use(
     },
     async (accessToken, refreshToken, expires_in, profile, done) => {
         let user = await User.findOne({ email: profile.emails[0].value });
+        
         if (!user) {
             user = new User({
                 email: profile.emails[0].value,
@@ -80,9 +84,13 @@ app.get('/auth/spotify', passport.authenticate('spotify'));
 app.get(
   '/auth/spotify/callback',
   passport.authenticate('spotify', { failureRedirect: '/' }),
-  (req, res) => {
-    console.log('Spotify login successful:', req.user);
-    res.send('Logged in with Spotify!');
+  async (req, res) => {
+    // Once the user is authenticated with Spotify, save their access token
+    const user = await User.findOne({ email: req.user.emails[0].value });
+    user.spotifyToken = req.user.accessToken; // Save Spotify access token
+    user.spotifyLinked = true; // Mark the account as linked
+    await user.save();
+    res.send('Spotify account linked successfully!');
   }
 );
 

@@ -1,13 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butterfy</title>
+  <link href="src/index.css" rel="stylesheet">
+</head>
+<body class="bg-darkBackground text-offWhite">
+
+  <div class="flex flex-col items-center justify-center min-h-screen space-y-8">
+
+    <h1 class="text-4xl font-bigshot text-center text-spotifyGreen">Welcome to Butterfy!</h1>
+    
+    <p class="text-xl font-fira text-darkText">The place to find your music match</p>
+
+    <img src="music-note-sketch.png" alt="Butterfy Logo" class="h-32 w-32 object-contain">
+
+    <a href="/signup" class="bg-spotifyGreen text-darkBackground px-6 py-3 rounded-full text-lg font-bold hover:bg-opacity-80 transition duration-300">
+      Sign Up
+    </a>
+
+    <p class="text-darkText text-sm">
+      Already have an account? <a href="/login" class="text-spotifyGreen hover:underline">Login</a>
+    </p>
+
+  </div>
+
+</body>
 </html>
