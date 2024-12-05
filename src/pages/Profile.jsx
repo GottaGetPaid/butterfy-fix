@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ProfileForm from '../components/Profile/ProfileForm';
 import GenreSelector from '../components/Profile/GenreSelector';
 import Search from '../components/Profile/Search';
+import Header from '../components/Profile/Layout/Header';
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-butterfy-dark">
+      <Header />
       <main className="max-w-3xl mx-auto p-6">
         <h1 className="text-3xl text-center font-bold mb-8">Welcome to Butterfy! Lets Take the Next Steps To Create Your Profile.</h1>
         
