@@ -85,12 +85,13 @@ app.get(
   '/auth/spotify/callback',
   passport.authenticate('spotify', { failureRedirect: '/' }),
   async (req, res) => {
-    // Once the user is authenticated with Spotify, save their access token
     const user = await User.findOne({ email: req.user.emails[0].value });
-    user.spotifyToken = req.user.accessToken; // Save Spotify access token
-    user.spotifyLinked = true; // Mark the account as linked
+    user.spotifyToken = req.user.accessToken; // saves spotify access token
+    user.spotifyLinked = true; // mark the account as linked
     await user.save();
-    res.send('Spotify account linked successfully!');
+
+    // redirect the user to the profile page
+    res.redirect('/profile');
   }
 );
 
