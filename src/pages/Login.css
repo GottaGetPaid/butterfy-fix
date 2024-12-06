@@ -1,0 +1,84 @@
+.login-page {
+    background-color: #292222; /* Matches the background from List.css */
+    color: #ede8dd;
+    font-family: "Fira Code", monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .login-container {
+    background: rgba(255, 255, 255, 0.05); /* Slightly transparent container */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .login-title {
+    font-family: "Bigshot One", sans-serif;
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .login-form label {
+    text-align: left;
+    font-size: 14px;
+    color: #ede8dd;
+  }
+  
+  .login-form input {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ede8dd;
+    color: #292222;
+  }
+  
+  .login-form input:focus {
+    border-color: #1DB954;
+    outline: none;
+    box-shadow: 0 0 4px rgba(29, 185, 84, 0.5);
+  }
+  
+  .login-button {
+    background-color: #1db954;
+    color: #ede8dd;
+    font-size: 16px;
+    font-family: "Fira Code", monospace;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #1ed760;
+  }
+  
+  .login-message {
+    font-size: 14px;
+    color: #bbb;
+    margin-top: 15px;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    margin-top: 10px;
+  }
+  
+  

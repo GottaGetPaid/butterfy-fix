@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./Playlist.css";
+import "./List.css";
 
 const Playlist = () => {
   const navigate = useNavigate();
