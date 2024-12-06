@@ -98,3 +98,25 @@ app.get(
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000')
 });
+
+// fake user
+mongoose.connect('mongodb://localhost:27017/butterfy', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => {
+    const newUser = new User({
+        email: 'test@example.com',
+        username: 'testuser',
+        password: 'hashedpassword', 
+    });
+    return newUser.save();
+})
+.then(() => {
+    console.log('Fake user added!');
+    mongoose.connection.close();
+})
+.catch((err) => {
+    console.error('Error adding user:', err);
+    mongoose.connection.close();
+});
